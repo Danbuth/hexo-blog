@@ -18,7 +18,7 @@ head:
 
 # Jump Links Settings
 url:
-    rss:
+    rss: "/atom.xml"
     daily_pic: "#"
     logo: "#"
 
@@ -104,7 +104,7 @@ copyright_since:
 # You can specify the text you want to show in footer, HTML tag is supported.
 #   For example, you can setup ICP license number as:
 #       '<a href="http://www.miitbeian.gov.cn" rel="nofollow">某ICP备xxxxxxxx号-x</a>'
-footer_text:
+footer_text: '<a href="http://www.miitbeian.gov.cn" rel="nofollow">浙ICP备18011919号</a>'
 
 # Qrcode for redirect at other device
 #    use: choose which method to generate the qrcode for each posts.

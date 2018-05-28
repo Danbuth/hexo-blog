@@ -78,6 +78,24 @@ search:
   path: search.xml
   field: all
 
+#RSS
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+
+admin:
+  qiniuCfg:
+      imageslim: true  # 启动图片瘦身，仅华东区bucket可以使用
+      AccessKey: 'dkvhe2cixgbK9LaftecFrQpo60dT7qR7nD15fNA9'
+      SecretKey: 'R4brFAbRKpjFxNYyLMlWXVpmUVofVsupnsGn-Q0K'
+      BucketName: 'hexo'
+      bucketHost: 'p657mjf4s.bkt.clouddn.com'
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
