@@ -15,7 +15,7 @@ date: 2018-03-28 19:15:00
 
 ### 1.1 安装依赖库
 
-```
+```shell
 yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
 yum install  gcc perl-ExtUtils-MakeMaker
 ```
@@ -24,7 +24,7 @@ yum install  gcc perl-ExtUtils-MakeMaker
 
 > 假如原先有用yum安装过git，则需要先卸载一下
 
-```
+```shell
 yum remove git
 ```
 
@@ -37,7 +37,7 @@ yum remove git
 
 >这里我选择下载git-2.16.3.tar.gz
 
-```
+```shell
 cd /usr/local/src
 wget https://www.kernel.org/pub/software/scm/git/git-2.16.3.tar.gz
 
@@ -45,7 +45,7 @@ wget https://www.kernel.org/pub/software/scm/git/git-2.16.3.tar.gz
 
 ### 1.4 解压、编译和安装
 
-```
+```shell
 tar -zvxf git-2.16.3.tar.gz
 cd git-2.16.3
 make prefix=/usr/local/git all
@@ -53,7 +53,7 @@ make prefix=/usr/local/git install
 ```
 ### 1.5 将git目录加入PATH
 
-```
+```shell
 echo 'export PATH=$PATH:/usr/local/git/bin' >> /etc/bashrc
 source /etc/bashrc
 ```
@@ -65,7 +65,7 @@ source /etc/bashrc
 
 > 此用户将作为git仓库的管理员
 
-```
+```shell
 useradd -m git
 passwd git
 ```
@@ -103,7 +103,8 @@ passwd git
 	id_rsa  id_rsa.pub  known_hosts
 
 > 初始化全局设置
-```
+
+```shell
 git config --global user.name "git"
 git config --global user.email "git@test.com"
 ```
@@ -123,7 +124,7 @@ git config --global user.email "git@test.com"
 
 > 此正则会导致用户名以数字开头时提示为不安全用户而导致用户无法正确加入
 
-```
+```shell
 (root)
 cd /tmp
 git clone https://github.com/res0nat0r/gitosis.git
@@ -134,7 +135,7 @@ sudo python setup.py install
 
 > 首先要用之前创建的管理员公钥初始化gitosis。
 
-```
+```shell
 su - git
 gitosis-init < ~/.ssh/id_rsa.pub
 chmod 755 /home/git/repositories/gitosis-admin.git/hooks/post-update
@@ -142,7 +143,7 @@ chmod 755 /home/git/repositories/gitosis-admin.git/hooks/post-update
 
 > git clone gitosis的控制目录gitosis-admin
 
-```
+```shell
 mkdir myrepo
 cd myrepo
 git clone git@localhost:gitosis-admin.git
@@ -150,7 +151,7 @@ git clone git@localhost:gitosis-admin.git
 
 > 这样gitosis的控制目录gitosis-admin就被clone下了。里面结构如下：
 
-```
+```shell
 cd gitosis-admin/
 $ ls -R
 .:
@@ -163,7 +164,7 @@ git@my-server.pub
 * gitosis.conf 文件是用来设置用户、仓库和权限的配置文件。
 * keydir 目录则是保存所有具有访问权限用户公钥的地方，允许访问gitosis的用户的公钥都保存在这里。
 
-```
+```shell
 $ cat gitosis.conf 
 [gitosis]
  
@@ -175,7 +176,7 @@ writable = gitosis-admin
 
 > 下面我们可以新增一个项目。为此我们要建立一个名为dev的组(group)，以及他们拥有写权限的项目。并允许’debugo’这个用户有权利读写’proj1’这个新项目：
 
-```
+```shell
 [group dev]
 members = debugo@my-server
 writable = proj1
@@ -183,13 +184,13 @@ writable = proj1
 
 > debugo虽然已经添加到了配置文件中，但它的公钥还没有被gitosis获知。所以我们要将debugo的公钥改名为debugo.pub，拷贝到keydir中。
 
-```
+```shell
 cp /tmp/id_rsa.pub keydir/debugo@my-server.pub
 git add keydir/debugo@my-server.pub
 ```
 
 > 修改完之后，提交 gitosis-admin 里的改动，并push到服务器使其生效。
-```
+```shell
 git commit -am 'add new group'
 git push origin master
 ```
@@ -197,13 +198,13 @@ git push origin master
 ### 2.4 git项目管理
 
 > 在debugo用户目录下，首先先初始化用户信息。
-```
+```shell
 git config --golbal user.name debugo
 git config --golbal user.email debugo@
 ```
 > debugo用户已经有对proj1这个项目有读写权限了，但是proj1这个项目并没有任何内容。下面我们首先初始化一个本地项目。
 
-```
+```shell
 mkdir proj1
 cd proj1/
 git init

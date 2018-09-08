@@ -7,10 +7,10 @@ head:
     favicon: "/img/favicon.png"
     high_res_favicon: "/img/favicon.png"
     apple_touch_icon: "/img/favicon.png"
-    keywords:
+    keywords: "Danbu"
     site_verification:
-        google:
-        baidu: NPc8ljHuuD
+        google: IUFo9eKi7PU7xoLidYoYL6qDrwvRkbRGn5jqjMOm9YY
+        baidu: f5fbiDcseh
 
     # Enable generate structured-data as JSON+LD for SEO or not.
     #    Set as 'false' if it cause some wrong when `hexo g`.
@@ -122,8 +122,8 @@ qrcode:
 #    Prettify
 #        theme: # Available value in /source/css/prettify/[theme].min.css
 prettify:
-    enable: false
-    theme: "github-v2"
+    enable: true
+    theme: "vibrant-ink"
 
 #    Hanabi (https://github.com/egoist/hanabi)
 #        line_number: [true/false] # Show line number for code block
@@ -190,7 +190,7 @@ sidebar:
     homepage:
         use: true
         icon: home
-        divider: false
+        divider: true
     archives:
         use: true
         icon: inbox
@@ -212,12 +212,16 @@ sidebar:
             link: "/links"
             icon: face
             divider: false
+        标签云:
+            link: "/tags"
+            icon: toc
+            divider: false
     article_num:
         use: false
         divider: false
     footer:
         divider: true
-        theme: true
+        theme: false
         support: false
         feedback: false
         material: false
@@ -268,9 +272,9 @@ search:
 # Available value:
 #     baidu | google | cnzz
 analytics:
-    google_site_id:
+    google_site_id: c9bbf636ee33cbd22f846832cbce4de3
     baidu_site_id:
-    cnzz_site_id:
+    cnzz_site_id: 1274711266
 
 # Leancloud Views
 leancloud:
@@ -281,9 +285,9 @@ leancloud:
 
 # Busuanzi 不蒜子 Views
 busuanzi:
-    enable: false
-    all_site_uv: false
-    post_pv: false
+    enable: true
+    all_site_uv: true
+    post_pv: true
     busuanzi_pure_mini_js: "https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"
 
 # Files Vendors
